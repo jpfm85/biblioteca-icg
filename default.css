@@ -231,12 +231,13 @@ hr {
 		margin-bottom: 2em;
 	}
 
-	#page .title h2
+	#page .title h2, #search .title h2
 	{
 		font-size: 1.5em;
 		font-weight: 400;
 		color: rgba(0,0,0,0.8);
-	}
+	}    
+                    
 	
 	#page .title .byline
 	{
