@@ -20,7 +20,7 @@ Released   : 20140315
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php bloginfo('name'); wp_title();?></title>
+<title><?php wp_title();?></title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -35,14 +35,14 @@ Released   : 20140315
 	
 	#header-wrapper
 {
-	background: url(<?php header_image(); ?>) no-repeat top center;
+	background: url(<?php header_image(); ?>) no-repeat bottom center;
 	background-size: cover;
 }
 	-->
 	
 </style>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <div id="wrapper">
 	<div id="header-wrapper">
 		<div id="header" class="container">
@@ -51,40 +51,26 @@ Released   : 20140315
 				<p><?php bloginfo('description'); ?></p>
 			</div>
 			<div id="social">
-				<ul class="contact">
-					<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
-					<li><a href="#" class="icon icon-facebook"><span></span></a></li>
-					<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
-					<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
-					<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
-				</ul>
+				
 			</div>
 		</div>
-		<?php 
+	</div>
+	<div id="menu">
+		<?php
+	get_template_part( 'user-menu' );
+	?>
+			<?php 
 		$primary_menu_args = array (
 			'theme_location' => 'primary',
-			'container_class' => 'container',
-			'container_id' => 'menu',
+			'container_class' => '',
+			'container_id' => '',
 					
 		);
 
 		wp_nav_menu($primary_menu_args);
 
 		?>
-		
-		
-		
-		<!--
-		<div id="menu" class="container">
-			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-				<li><a href="#" accesskey="1" title="">Services</a></li>
-				<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-				<li><a href="#" accesskey="3" title="">About Us</a></li>
-				<li><a href="#" accesskey="4" title="">Careers</a></li>
-				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
-			</ul>
-		</div>
-  -->
+
 	</div>
 	
+	<div class="clearfix"></div>

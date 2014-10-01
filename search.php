@@ -4,11 +4,20 @@ get_header();
 <div id="page" class="container">
 
 	<?php
+	get_template_part( 'searchform', 'item' );
 	if ( have_posts() ) {
 
 		while ( have_posts() ) {
 			the_post();
-			the_title( '<h2>', '</h2>' );
+			?>
+			<h2>
+				<a href="<?php the_permalink(); ?>">
+					<?php
+					the_title();
+					?>
+				</a>
+			</h2>
+			<?php
 			the_content();
 		}
 	} else {
@@ -18,6 +27,5 @@ get_header();
 
 </div>
 
-	<?php
-	get_footer();
-	
+<?php
+get_footer();

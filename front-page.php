@@ -3,7 +3,7 @@
 <div id="search" class="container">
 	<div class="title"><h2><?php _e( 'Search', 'bookpress' ) ?></h2></div>
 	<?php 
-	get_search_form();	
+	get_template_part('searchform', 'item');	
 	?>	
 </div>
 
@@ -32,13 +32,7 @@
 			<img src="<?php echo get_stylesheet_directory_uri();?>/images/pic02.jpg" width="282" height="150" alt="" />
 			<p>Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Suspendisse iaculis mauris nec lorem.</p>
 		</div>
-		<div class="column4">
-			<div class="title">
-				<h2>Praesent scelerisque</h2>
-			</div>
-			<img src="<?php echo get_stylesheet_directory_uri();?>/images/pic03.jpg" width="282" height="150" alt="" />
-			<p>Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Suspendisse iaculis mauris.</p>
-		</div>
+		<?php dynamic_sidebar('home-column4'); ?>
 	</div>
 	<div id="portfolio-wrapper">
 		<div id="portfolio" class="container">

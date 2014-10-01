@@ -9,7 +9,9 @@ get_header();
 		while ( have_posts() ) {
 			the_post();
 			the_title( '<h2>', '</h2>' );
+			edit_post_link();
 			the_content();
+			comments_template();
 		}
 	} else {
 		_e( 'Nothing was found', 'bookpress' );

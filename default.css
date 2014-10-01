@@ -176,6 +176,7 @@ hr {
 #menu {
 	overflow: hidden;
 	background: #3e86d8;
+        margin-bottom: 2em;
 }
 
 #menu ul {
@@ -218,7 +219,7 @@ hr {
 
 #page {
 	overflow: hidden;
-	padding: 5em 0em;
+	padding: 2.5em 0em;
 }
 
 	#page img
@@ -293,10 +294,13 @@ hr {
 	font-weight: 400;
 }
 
+#sidebar2, .user-menu {
+	float: right;
+	}
+
 /** SIDEBAR 2 */
 
-#sidebar2 {
-	float: right;
+#sidebar2 {	
 	width: 250px;
 }
 
@@ -561,6 +565,7 @@ ul.style3 .first {
 	
 	ul.contact li a
 	{
+           color: rgba(255,255,255,1); 
 	}
 	
 	ul.contact li a:before

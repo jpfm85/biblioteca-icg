@@ -17,7 +17,7 @@ class Theme {
 	
 	public function __construct() {
 		add_action('after_setup_theme', array (__CLASS__, 'after_setup_theme'));
-			
+		add_action('widgets_init', array (__CLASS__, 'widgets_init'));	
 	}
 	
 	public static function after_setup_theme (){
@@ -37,7 +37,20 @@ class Theme {
 		
 		add_theme_support('custom-header', $custom_header_defaults);
 		add_theme_support('menus');
+		add_theme_support('html5');
 		register_nav_menu('primary', __('Primary Menu', 'bookpress'));
+	}
+	
+	public static function widgets_init (){
+		$args = array (
+			'id' => 'home-column4',
+			'before_widget' => '<div class="column4">',
+			'after_widget' => '</div>',
+			'before_title' => '<div class="title"><h2>',
+			'after_title' => '</h2></div>',
+			
+		);
+		register_sidebar($args);
 	}
 }
 
