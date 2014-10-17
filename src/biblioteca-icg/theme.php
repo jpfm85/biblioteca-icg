@@ -18,6 +18,7 @@ class Theme {
 	public function __construct() {
 		add_action('after_setup_theme', array (__CLASS__, 'after_setup_theme'));
 		add_action('widgets_init', array (__CLASS__, 'widgets_init'));	
+		add_filter('comment_form_default_fields', array(__CLASS__, 'comment_form_default_fields'));
 	}
 	
 	public static function after_setup_theme (){
@@ -39,6 +40,11 @@ class Theme {
 		add_theme_support('menus');
 		add_theme_support('html5');
 		register_nav_menu('primary', __('Primary Menu', 'bookpress'));
+	}
+	public static function comment_form_default_fields($fields){
+		$fields ['url'] = '';
+		$fields ['rating'] = 'Rating';
+		return $fields;
 	}
 	
 	public static function widgets_init (){
