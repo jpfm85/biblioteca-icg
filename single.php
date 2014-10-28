@@ -8,10 +8,11 @@ get_header();
 
 		while ( have_posts() ) {
 			the_post();
-			the_title( '<h2>', '</h2>' );
-			edit_post_link();
-			the_content();
-			comments_template();
+			?>
+	<article <?php post_class(); ?>>
+		<?php get_template_part('loop'); ?>
+	</article>
+	<?php
 		}
 	} else {
 		_e( 'Nothing was found', 'bookpress' );

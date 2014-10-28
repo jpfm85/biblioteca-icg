@@ -71,7 +71,7 @@ a img {
 		margin: 0 0 3em 0;
 	}
 	
-	.image-left
+	.image-left, .alignleft
 	{
 		float: left;
 		margin: 0 2em 2em 0;
@@ -268,11 +268,20 @@ hr {
 }
 
 
-#content .post
+#content .post, article header
 {
-	margin-bottom: 4em;
-	padding-bottom: 4em;
+	margin-bottom: 4em;	
 	border-bottom: 1px solid #E6E7DC;
+}
+
+
+#content .post
+{	
+	padding-bottom: 4em;	
+}
+article header {
+    
+   padding-bottom: 2em;
 }
 
 /** SIDEBAR 1 */

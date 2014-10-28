@@ -44,8 +44,7 @@ class Theme {
 		register_nav_menu( 'primary', __( 'Primary Menu', 'bookpress' ) );
 	}
 	public static function comment_form_default_fields( $fields ) {
-		$fields[ 'url' ] = '';
-		$fields[ 'rating' ] = 'Rating';
+		$fields[ 'url' ] = '';		
 		return $fields;
 	}
 
@@ -58,6 +57,38 @@ class Theme {
 			'after_title'	 => '</h2></div>',
 		);
 		register_sidebar( $args );
+	}
+	
+	public static function the_overall_rating() {
+		global $post;
+		if ( shortcode_exists( 'yasr_overall_rating' ) ) {
+?>
+				<div class="alignleft">
+			<?php
+			_e( 'Rating: ', 'bookpress' );
+			?>
+				</div>
+			<?php
+			echo do_shortcode( '[yasr_overall_rating size="small"]' );
+			?>	
+		<?php
+		}
+		elseif (  function_exists( 'csr_get_overall_rating' )){
+			csr_get_overall_rating($post->ID);
+		}
+	}
+
+	public static function the_rating(){
+		global $post;
+		if ( function_exists( 'spr_show_rating' ) ) {
+			echo spr_show_rating();
+		} elseif ( function_exists( 'the_ratings' ) ) {
+			the_ratings();
+		} elseif ( shortcode_exists( 'yasr_visitor_votes' ) ) {
+			echo do_shortcode( '[yasr_visitor_votes]' );
+		} else {
+			
+		}
 	}
 
 }
