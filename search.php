@@ -1,4 +1,8 @@
 <?php
+//global $wp_query;
+//$args = apply_filters( 'author_like_get_posts', $wp_query->query_vars );
+//query_posts( $args );
+
 get_header();
 ?>
 <div id="page" class="container">
@@ -10,13 +14,7 @@ get_header();
 		while ( have_posts() ) {
 			the_post();
 			?>
-			<h2>
-				<a href="<?php the_permalink(); ?>">
-					<?php
-					the_title();
-					?>
-				</a>
-			</h2>
+			<li><?php get_template_part( 'loop', 'search' ); ?></li>
 			<?php
 			the_content();
 		}

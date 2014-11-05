@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +19,6 @@ class Theme {
 		add_action( 'after_setup_theme', array( __CLASS__, 'after_setup_theme' ) );
 		add_action( 'widgets_init', array( __CLASS__, 'widgets_init' ) );
 		add_filter( 'comment_form_default_fields', array( __CLASS__, 'comment_form_default_fields' ) );
-
 	}
 
 	public static function after_setup_theme() {
@@ -43,42 +41,52 @@ class Theme {
 		add_theme_support( 'html5' );
 		register_nav_menu( 'primary', __( 'Primary Menu', 'bookpress' ) );
 	}
+
 	public static function comment_form_default_fields( $fields ) {
-		$fields[ 'url' ] = '';		
+		$fields[ 'url' ] = '';
 		return $fields;
 	}
 
 	public static function widgets_init() {
-		$args = array(
+		$home_column4_args	 = array(
 			'id'			 => 'home-column4',
+			'name'			 => __( 'Column four (home)', 'bookpress' ),
 			'before_widget'	 => '<div class="column4">',
 			'after_widget'	 => '</div>',
 			'before_title'	 => '<div class="title"><h2>',
 			'after_title'	 => '</h2></div>',
 		);
-		register_sidebar( $args );
+		$profile_column_args = array(
+			'id'			 => 'profile-column',
+			'name'			 => __( 'Profile Page Column', 'bookpress' ),
+			'before_widget'	 => '<div>',
+			'after_widget'	 => '</div>',
+			'before_title'	 => '<div class="title"><h2>',
+			'after_title'	 => '</h2></div>',
+		);
+		register_sidebar( $home_column4_args );
+		register_sidebar( $profile_column_args );
 	}
-	
+
 	public static function the_overall_rating() {
 		global $post;
 		if ( shortcode_exists( 'yasr_overall_rating' ) ) {
-?>
-				<div class="alignleft">
-			<?php
-			_e( 'Rating: ', 'bookpress' );
 			?>
-				</div>
+			<div class="alignleft">
+				<?php
+				_e( 'Rating: ', 'bookpress' );
+				?>
+			</div>
 			<?php
 			echo do_shortcode( '[yasr_overall_rating size="small"]' );
 			?>	
-		<?php
-		}
-		elseif (  function_exists( 'csr_get_overall_rating' )){
-			csr_get_overall_rating($post->ID);
+			<?php
+		} elseif ( function_exists( 'csr_get_overall_rating' ) ) {
+			csr_get_overall_rating( $post->ID );
 		}
 	}
 
-	public static function the_rating(){
+	public static function the_rating() {
 		global $post;
 		if ( function_exists( 'spr_show_rating' ) ) {
 			echo spr_show_rating();

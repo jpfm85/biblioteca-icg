@@ -1,4 +1,4 @@
-<form role="search" method="get" class="search-form" action="<?php home_url(); ?>">
+<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
 	<input type="hidden" id="post_type" name="post_type" value="item" />
 	<label>
 		<span class="screen-reader-text">Pesquisar por:</span>
