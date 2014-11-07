@@ -1,8 +1,7 @@
 <?php
-//global $wp_query;
-//$args = apply_filters( 'author_like_get_posts', $wp_query->query_vars );
-//query_posts( $args );
-
+global $wp_query;
+$args = apply_filters( 'author_like_get_posts', $wp_query->query_vars );
+query_posts( $args );
 get_header();
 ?>
 <div id="page" class="container">
@@ -10,18 +9,19 @@ get_header();
 	<?php
 	get_template_part( 'searchform', 'item' );
 	if ( have_posts() ) {
-
-		while ( have_posts() ) {
-			the_post();
-			?>
-			<li><?php get_template_part( 'loop', 'search' ); ?></li>
-			<?php
-			the_content();
+		?><ul class="style1"><?php
+			while ( have_posts() ) {
+				the_post();
+				?>
+				<li><?php get_template_part( 'loop', 'search' ); ?></li>
+				<?php
+				the_content();
+			}
+			?> </ul>> <?php
+		} else {
+			_e( 'Nothing was found', 'bookpress' );
 		}
-	} else {
-		_e( 'Nothing was found', 'bookpress' );
-	}
-	?>
+		?>
 
 </div>
 

@@ -1,6 +1,12 @@
 </div>
 <div id="footer">
-	<p>&copy; <?php bloginfo('name') ?> Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+
+	<p>
+		<a href="<?php echo home_url(); ?>">
+			<?php bloginfo( 'name' ) ?>
+		</a>
+	</p>
+
 </div>
 <?php wp_footer(); ?>
 </body>
